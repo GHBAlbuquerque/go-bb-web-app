@@ -1,4 +1,4 @@
-package main
+package render
 
 import (
 	"log"
@@ -6,7 +6,7 @@ import (
 	"text/template"
 )
 
-func renderTemplate(writer http.ResponseWriter, name string) {
+func RenderTemplate(writer http.ResponseWriter, name string) {
 	parsedTemplate, _ := template.ParseFiles("./templates/" + name + ".tmpl")
 
 	err := parsedTemplate.Execute(writer, nil)
