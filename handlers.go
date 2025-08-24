@@ -1,0 +1,11 @@
+package main
+
+import "net/http"
+
+func Home(writer http.ResponseWriter, request *http.Request) {
+	renderTemplate(writer, "home.page")
+}
+
+func About(writer http.ResponseWriter, request *http.Request) {
+	renderTemplate(writer, "about.page")
+}
