@@ -3,6 +3,7 @@ package render
 import (
 	"bytes"
 	"go-bb-web-app/pkg/config"
+	"go-bb-web-app/pkg/models"
 	"html/template"
 	"log"
 	"net/http"
@@ -16,7 +17,7 @@ func SetAppConfig(a *config.AppConfig) {
 	app = a
 }
 
-func RenderTemplate(writer http.ResponseWriter, name string) {
+func RenderTemplate(writer http.ResponseWriter, name string, templateData *models.TemplateData) {
 	// get the temaplte cache from the app config
 	templateCache := app.TemplateCache
 
@@ -29,7 +30,7 @@ func RenderTemplate(writer http.ResponseWriter, name string) {
 
 	buf := new(bytes.Buffer)
 
-	err := template.Execute(buf, nil)
+	err := template.Execute(buf, templateData)
 	if err != nil {
 		log.Println(err)
 	}
