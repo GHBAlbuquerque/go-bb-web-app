@@ -2,15 +2,15 @@ package render
 
 import (
 	"bytes"
+	"html/template"
 	"log"
 	"net/http"
 	"path/filepath"
-	"text/template"
 )
 
 func RenderTemplate(writer http.ResponseWriter, name string) {
-	// create a template cache
-	templateCache, err := createTemplateCache()
+	// get the temaplte cache from the app config
+	templateCache, err := CreateTemplateCache()
 	if err != nil {
 		log.Fatal("Error parsing page:", err)
 	}
@@ -36,7 +36,7 @@ func RenderTemplate(writer http.ResponseWriter, name string) {
 	}
 }
 
-func createTemplateCache() (map[string]*template.Template, error) {
+func CreateTemplateCache() (map[string]*template.Template, error) {
 	// initialize template map
 	myCache := map[string]*template.Template{}
 
