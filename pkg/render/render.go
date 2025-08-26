@@ -2,29 +2,34 @@ package render
 
 import (
 	"bytes"
+	"go-bb-web-app/pkg/config"
 	"html/template"
 	"log"
 	"net/http"
 	"path/filepath"
 )
 
+var app *config.AppConfig
+
+// setAppConfig sets the config for the template package
+func SetAppConfig(a *config.AppConfig) {
+	app = a
+}
+
 func RenderTemplate(writer http.ResponseWriter, name string) {
 	// get the temaplte cache from the app config
-	templateCache, err := CreateTemplateCache()
-	if err != nil {
-		log.Fatal("Error parsing page:", err)
-	}
+	templateCache := app.TemplateCache
 
 	// get requested template from cache
 	template, ok := templateCache[name]
 
 	if !ok {
-		log.Fatal(err)
+		log.Fatal("Could not get template from template cache. Name: ", name)
 	}
 
 	buf := new(bytes.Buffer)
 
-	err = template.Execute(buf, nil)
+	err := template.Execute(buf, nil)
 	if err != nil {
 		log.Println(err)
 	}
