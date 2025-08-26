@@ -17,6 +17,15 @@ func SetAppConfig(a *config.AppConfig) {
 	app = a
 }
 
+func AddDefaultData(templateData *models.TemplateData) *models.TemplateData {
+	//TODO
+
+	if templateData == nil {
+		return &models.TemplateData{}
+	}
+
+	return templateData
+}
 func RenderTemplate(writer http.ResponseWriter, name string, templateData *models.TemplateData) {
 	// get the temaplte cache from the app config
 	templateCache := app.TemplateCache
@@ -29,6 +38,7 @@ func RenderTemplate(writer http.ResponseWriter, name string, templateData *model
 	}
 
 	buf := new(bytes.Buffer)
+	templateData = AddDefaultData(templateData)
 
 	err := template.Execute(buf, templateData)
 	if err != nil {
