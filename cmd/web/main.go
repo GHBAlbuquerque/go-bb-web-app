@@ -7,12 +7,21 @@ import (
 	"go-bb-web-app/pkg/render"
 	"log"
 	"net/http"
+	"time"
+
+	"github.com/alexedwards/scs/v2"
 )
 
 const portNumber = ":8080"
 
+var app config.AppConfig
+var session *scs.SessionManager
+
 func main() {
-	var app config.AppConfig
+	app.InProduction = false
+
+	session = createSession()
+	app.Session = session
 
 	templateCache, err := render.CreateTemplateCache()
 	if err != nil {
@@ -38,4 +47,14 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func createSession() *scs.SessionManager {
+	newSession := scs.New()
+	newSession.Lifetime = 24 * time.Hour
+	newSession.Cookie.Persist = true
+	newSession.Cookie.SameSite = http.SameSiteLaxMode
+	newSession.Cookie.Secure = app.InProduction
+
+	return newSession
 }
