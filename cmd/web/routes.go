@@ -22,27 +22,3 @@ func routes(app *config.AppConfig) http.Handler {
 
 	return mux
 }
-
-/*
-Could have been done with just the standard lib:
-
-func routes() http.Handler {
-	mux := http.NewServeMux()
-
-	// simple routes
-	mux.HandleFunc("GET /", handlers.Repo.Home)
-	mux.HandleFunc("GET /about", handlers.Repo.About)
-
-	// example with path param and method
-	mux.HandleFunc("GET /users/{id}", func(w http.ResponseWriter, r *http.Request) {
-		id := r.PathValue("id") // stdlib path param
-		w.Write([]byte("user id = " + id))
-	})
-
-	return mux
-}
-
-func main() {
-	http.ListenAndServe(":8080", routes())
-}
-*/
