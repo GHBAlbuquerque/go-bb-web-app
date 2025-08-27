@@ -16,6 +16,7 @@ func routes(app *config.AppConfig) http.Handler {
 
 	// Middleware = functions that wrap your handlers to add common behavior before/after each request.
 	mux.Use(middleware.Logger, middleware.Recoverer)
+	mux.Use(WriteToConsole)
 
 	mux.Get("/", handlers.Repo.Home)
 	mux.Get("/about", handlers.Repo.About)
