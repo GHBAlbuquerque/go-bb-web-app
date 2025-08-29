@@ -1,8 +1,22 @@
 #go-bb-web-app
 
-1) running
-go run cmd/web/*.go        
+## Key Features
+• Showcase the property
+• Allow for booking a room for one or more nights
+• Check a room’s availability
+• Book the room
+• Notify guest, and notify property owner
 
-
+## Project Structure
 main.go - main file, starts server
 routes.go - router with all paths in the app
+
+## Libs used
+
+- [chi router](https://github.com/go-chi/chi/v5)
+- [scs session management](https://github.com/alexedwards/scs/v2)
+- [nosurf cookie management](https://github.com/justinas/nosurf )
+
+## Running the project
+go run cmd/web/*.go        
+
