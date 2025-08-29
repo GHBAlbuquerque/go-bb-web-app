@@ -1,0 +1,140 @@
+:root {
+  --brand: #0ea5e9;        /* sky-500 */
+  --brand-2: #8b5cf6;      /* violet-500 */
+  --ink: #e5e7eb;          /* slate-200 */
+  --muted: #94a3b8;        /* slate-400 */
+  --bg: #0b1020;           /* dark gradient base */
+  --bg-2: #0b1220;
+  --card: #101732;
+  --radius: 1.25rem;
+  --hero-image: url("../images/outside.png"); /* override per-page if needed */
+}
+
+/* Base */
+html, body { height: 100%; }
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(14,165,233,.15), transparent 50%),
+    radial-gradient(1000px 500px at 110% 10%, rgba(139,92,246,.18), transparent 55%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+}
+
+/* Navbar */
+.navbar {
+  --bs-navbar-padding-y: .85rem;
+  background: transparent;
+  transition: background-color .3s ease, box-shadow .3s ease;
+}
+.navbar .nav-link,
+.navbar .navbar-brand { color: #f1f5f9 !important; }
+.navbar-scrolled {
+  background: rgba(16, 23, 50, .85) !important;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 56vh;
+  display: grid;
+  place-items: center;
+  overflow: clip;
+}
+.hero--short { min-height: 48vh; }
+.hero--tall  { min-height: 72vh; }
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--hero-image) center/cover no-repeat;
+  transform: scale(1.03);
+  filter: brightness(.55) saturate(1.1);
+}
+.hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(closest-side, rgba(14,165,233,.18), transparent 60%),
+    radial-gradient(closest-side, rgba(139,92,246,.18), transparent 65%);
+  mix-blend-mode: screen;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+  max-width: 960px;
+}
+
+.badge-soft {
+  background: linear-gradient(90deg, rgba(14,165,233,.25), rgba(139,92,246,.25));
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(6px);
+}
+
+/* Cards & shells */
+.card-modern {
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.icon-pill {
+  width: 44px; height: 44px; display: grid; place-items: center;
+  border-radius: 999px; background: rgba(14,165,233,.18);
+  border: 1px solid rgba(255,255,255,.12);
+}
+.cta {
+  border-radius: var(--radius);
+  background: linear-gradient(90deg, rgba(14,165,233,.25), rgba(139,92,246,.25));
+  border: 1px solid rgba(255,255,255,.12);
+}
+footer { color: #9aa3b2; }
+
+/* Buttons */
+.btn-brand {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: linear-gradient(90deg, var(--brand), var(--brand-2));
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-bg: linear-gradient(90deg, #34c4ff, #a78bfa);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-focus-shadow-rgb: 14,165,233;
+}
+
+/* Chips / amenities */
+.chip {
+  display: inline-flex; align-items: center; gap: .5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  padding: .4rem .8rem;
+  background: rgba(255,255,255,.06);
+}
+.amenity i { font-size: 1.1rem; }
+
+/* Gallery */
+.gallery img {
+  border-radius: calc(var(--radius) - .25rem);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+/* Forms */
+label { color: #cbd5e1; }
+.form-control, .form-select, .form-textarea {
+  background-color: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.12);
+  color: #e5e7eb;
+}
+.form-control::placeholder, textarea::placeholder { color: #94a3b8; }
+.input-icon { position: relative; }
+.input-icon i {
+  position: absolute; left: .75rem; top: 50%;
+  transform: translateY(-50%); opacity: .8;
+}
+.input-icon input { padding-left: 2.25rem; }
+
+/* Utilities */
+.object-fit-cover { object-fit: cover; }
+.text-secondary { color: #9aa3b2 !important; }
