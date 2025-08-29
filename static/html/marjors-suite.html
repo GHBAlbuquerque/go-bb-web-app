@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Major’s Suite — Go Bed & Breakfast</title>
+
+    <!-- Fonts & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --brand: #0ea5e9;
+        --brand-2: #8b5cf6;
+        --ink: #0b1220;
+        --muted: #94a3b8;
+        --card: #101732;
+        --radius: 1.25rem;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial;
+        color: #e5e7eb;
+        background: radial-gradient(
+            1200px 600px at 10% -10%,
+            rgba(14, 165, 233, 0.15),
+            transparent 50%
+          ),
+          radial-gradient(
+            1000px 500px at 110% 10%,
+            rgba(139, 92, 246, 0.18),
+            transparent 55%
+          ),
+          linear-gradient(180deg, #0b1020 0%, #0b1220 100%);
+      }
+
+      /* Navbar */
+      .navbar {
+        --bs-navbar-padding-y: 0.85rem;
+        background: transparent;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .navbar-scrolled {
+        background: rgba(16, 23, 50, 0.85) !important;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      }
+
+      /* Hero */
+      .hero {
+        position: relative;
+        min-height: 56vh;
+        display: grid;
+        place-items: end center;
+        overflow: clip;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("../images/marjors-suite.png") center/cover no-repeat;
+        transform: scale(1.03);
+        filter: brightness(0.55) saturate(1.1);
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            closest-side,
+            rgba(14, 165, 233, 0.18),
+            transparent 60%
+          ),
+          radial-gradient(
+            closest-side,
+            rgba(139, 92, 246, 0.18),
+            transparent 65%
+          );
+        mix-blend-mode: screen;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+      }
+
+      .badge-soft {
+        background: linear-gradient(
+          90deg,
+          rgba(14, 165, 233, 0.25),
+          rgba(139, 92, 246, 0.25)
+        );
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(6px);
+      }
+
+      /* Shell */
+      .card-modern {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.04),
+          rgba(255, 255, 255, 0.02)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 0.4rem 0.8rem;
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .amenity i {
+        font-size: 1.1rem;
+      }
+
+      .gallery img {
+        border-radius: calc(var(--radius) - 0.25rem);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .btn-brand {
+        --bs-btn-color: #fff;
+        --bs-btn-bg: linear-gradient(90deg, var(--brand), var(--brand-2));
+        --bs-btn-border-color: transparent;
+        --bs-btn-hover-bg: linear-gradient(90deg, #34c4ff, #a78bfa);
+        --bs-btn-hover-border-color: transparent;
+      }
+
+      footer {
+        color: #9aa3b2;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="topNav">
+      <div class="container-xxl">
+        <a class="navbar-brand fw-semibold" href="/home"
+          ><i class="bi bi-compass me-2"></i>Go B&B</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navCollapse">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                data-bs-toggle="dropdown"
+                >Rooms</a
+              >
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="/rooms/general-quarters"
+                    >Marjors's Suite</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/rooms/major-suite"
+                    >Marjor's Suite</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-brand" href="/make-reservation">Book Now</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO / TITLE STRIP -->
+    <header class="hero">
+      <div class="hero-content">
+        <div class="container-xxl pb-4 pb-md-5">
+          <span class="badge badge-soft rounded-pill px-3 py-2 mb-3"
+            >Suite • Ocean glimpses • Breakfast included</span
+          >
+          <h1 class="display-5 fw-bold">Major’s Suite</h1>
+          <p class="text-white-50 lead">
+            A calm, work‑ready suite with a cozy lounge, espresso bar, and
+            balcony seating.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="py-5 py-md-6">
+      <div class="container-xxl">
+        <div class="row g-4">
+          <!-- Gallery -->
+          <div class="col-lg-7">
+            <div class="gallery d-grid gap-3">
+              <img
+                src="../images/marjors-suite.png"
+                class="w-100"
+                alt="Major’s Suite main photo"
+              />
+              <div class="row g-3">
+                <div class="col-6">
+                  <img
+                    src="../images/tray.png"
+                    class="w-100"
+                    alt="Breakfast tray"
+                  />
+                </div>
+                <div class="col-6">
+                  <img
+                    src="../images/woman-laptop.png"
+                    class="w-100"
+                    alt="Workspace"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Details / Booking Card -->
+          <div class="col-lg-5">
+            <div class="card-modern p-4 p-md-4 sticky-top" style="top: 90px">
+              <div
+                class="d-flex align-items-center justify-content-between mb-2"
+              >
+                <h2 class="h4 fw-semibold m-0">Your stay</h2>
+                <span class="chip"
+                  ><i class="bi bi-star-fill"></i><strong>4.8</strong
+                  ><span class="text-secondary">(231)</span></span
+                >
+              </div>
+
+              <p class="text-secondary">
+                Your home away from home, set on the majestic waters of the
+                Atlantic Ocean — a vacation to remember. Premium linens, private
+                bath, and fast Wi‑Fi for focused mornings.
+              </p>
+
+              <div class="d-flex flex-wrap gap-2 amenity my-3">
+                <span class="chip"><i class="bi bi-wifi"></i> Fast Wi‑Fi</span>
+                <span class="chip"
+                  ><i class="bi bi-cup-hot"></i> Espresso bar</span
+                >
+                <span class="chip"><i class="bi bi-lamp"></i> Workspace</span>
+                <span class="chip"><i class="bi bi-wind"></i> Balcony</span>
+                <span class="chip"
+                  ><i class="bi bi-sunrise"></i> Breakfast</span
+                >
+                <span class="chip"><i class="bi bi-droplet"></i> Ensuite</span>
+              </div>
+
+              <ul class="text-secondary mb-4">
+                <li>King bed • Premium linens</li>
+                <li>Private bathroom with rain shower</li>
+                <li>Separate lounge with sofa</li>
+                <li>Ocean peek views from balcony seating</li>
+              </ul>
+
+              <div class="d-flex align-items-end justify-content-between mb-3">
+                <div>
+                  <div class="h4 fw-semibold m-0">
+                    $189
+                    <span class="h6 text-secondary fw-normal">/ night</span>
+                  </div>
+                  <div class="small text-secondary">
+                    Free cancellation within 48h
+                  </div>
+                </div>
+                <a class="btn btn-brand btn-lg" href="/search-availability"
+                  ><i class="bi bi-calendar2-check me-2"></i>Check dates</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- More info sections -->
+        <div class="row g-4 mt-4">
+          <div class="col-lg-7">
+            <div class="card-modern p-4">
+              <h3 class="h5 fw-semibold mb-2">About this room</h3>
+              <p class="text-secondary mb-0">
+                Designed for quiet mornings and slow evenings, Major’s Suite
+                balances coastal charm with modern comforts — ideal for remote
+                workers, couples, and solo travelers seeking a calm base near
+                the shore.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="card-modern p-4 h-100">
+              <h3 class="h6 text-uppercase text-secondary">House rules</h3>
+              <ul class="mb-0 text-secondary">
+                <li>Check‑in after 2:00 PM • Check‑out 11:00 AM</li>
+                <li>No smoking • No parties</li>
+                <li>Quiet hours 10:00 PM — 7:00 AM</li>
+                <li>Pets on request (fees may apply)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      class="py-5 border-top"
+      style="border-color: rgba(255, 255, 255, 0.12) !important"
+    >
+      <div class="container-xxl">
+        <div class="row gy-3 align-items-center">
+          <div class="col-md">
+            <span class="fw-semibold">Go B&B</span>
+            <span class="ms-2 text-secondary"
+              >© <span id="year"></span> All rights reserved.</span
+            >
+          </div>
+          <div class="col-md-auto d-flex gap-3">
+            <a class="link-light text-decoration-none" href="/about">About</a>
+            <a class="link-light text-decoration-none" href="/contact"
+              >Contact</a
+            >
+            <a class="link-light text-decoration-none" href="/make-reservation"
+              >Book</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Navbar blur on scroll
+      const nav = document.getElementById("topNav");
+      const onScroll = () =>
+        nav.classList.toggle("navbar-scrolled", window.scrollY > 12);
+      document.addEventListener("scroll", onScroll);
+      onScroll();
+      // Year
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

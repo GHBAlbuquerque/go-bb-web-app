@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reserve your stay — Go B&B</title>
+
+    <!-- Fonts & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --brand: #0ea5e9;
+        --brand-2: #8b5cf6;
+        --ink: #0b1220;
+        --muted: #94a3b8;
+        --card: #101732;
+        --radius: 1.25rem;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial;
+        color: #e5e7eb;
+        background: radial-gradient(
+            1200px 600px at 10% -10%,
+            rgba(14, 165, 233, 0.15),
+            transparent 50%
+          ),
+          radial-gradient(
+            1000px 500px at 110% 10%,
+            rgba(139, 92, 246, 0.18),
+            transparent 55%
+          ),
+          linear-gradient(180deg, #0b1020 0%, #0b1220 100%);
+      }
+
+      /* Navbar */
+      .navbar {
+        --bs-navbar-padding-y: 0.85rem;
+        background: transparent;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .navbar .nav-link,
+      .navbar .navbar-brand {
+        color: #f1f5f9 !important;
+      }
+      .navbar-scrolled {
+        background: rgba(16, 23, 50, 0.85) !important;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      }
+
+      /* Hero */
+      .hero {
+        position: relative;
+        min-height: 48vh;
+        display: grid;
+        place-items: end center;
+        overflow: clip;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("../images/outside.png") center/cover no-repeat;
+        transform: scale(1.03);
+        filter: brightness(0.5) saturate(1.1);
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            closest-side,
+            rgba(14, 165, 233, 0.18),
+            transparent 60%
+          ),
+          radial-gradient(
+            closest-side,
+            rgba(139, 92, 246, 0.18),
+            transparent 65%
+          );
+        mix-blend-mode: screen;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+      }
+
+      .badge-soft {
+        background: linear-gradient(
+          90deg,
+          rgba(14, 165, 233, 0.25),
+          rgba(139, 92, 246, 0.25)
+        );
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(6px);
+      }
+
+      /* Shell */
+      .card-modern {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.04),
+          rgba(255, 255, 255, 0.02)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      }
+      .btn-brand {
+        --bs-btn-color: #fff;
+        --bs-btn-bg: linear-gradient(90deg, var(--brand), var(--brand-2));
+        --bs-btn-border-color: transparent;
+        --bs-btn-hover-bg: linear-gradient(90deg, #34c4ff, #a78bfa);
+        --bs-btn-hover-border-color: transparent;
+      }
+
+      label {
+        color: #cbd5e1;
+      }
+      .form-control,
+      .form-select {
+        background-color: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #e5e7eb;
+      }
+      .form-control::placeholder {
+        color: #94a3b8;
+      }
+      .input-icon {
+        position: relative;
+      }
+      .input-icon i {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.8;
+      }
+      .input-icon input {
+        padding-left: 2.25rem;
+      }
+
+      footer {
+        color: #9aa3b2;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="topNav">
+      <div class="container-xxl">
+        <a class="navbar-brand fw-semibold" href="/home"
+          ><i class="bi bi-compass me-2"></i>Go B&B</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navCollapse">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                data-bs-toggle="dropdown"
+                >Rooms</a
+              >
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="/rooms/general-quarters"
+                    >General's Quarters</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/rooms/major-suite"
+                    >Major's Suite</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-brand" href="/make-reservation">Book Now</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-content">
+        <div class="container-xxl pb-4 pb-md-5">
+          <span class="badge badge-soft rounded-pill px-3 py-2 mb-3"
+            >Plan your stay</span
+          >
+          <h1 class="display-5 fw-bold">Reservations</h1>
+          <p class="text-white-50 lead">
+            Choose your dates and guests — we’ll show you available rooms
+            instantly.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="py-5 py-md-6">
+      <div class="container-xxl">
+        <div class="row g-4">
+          <!-- Form -->
+          <div class="col-lg-7">
+            <form
+              class="card-modern p-4"
+              method="GET"
+              action="/search-availability"
+              id="reservationForm"
+            >
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="checkin" class="form-label">Check‑in</label>
+                  <div class="input-icon">
+                    <i class="bi bi-calendar-event"></i>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="checkin"
+                      name="start"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="checkout" class="form-label">Check‑out</label>
+                  <div class="input-icon">
+                    <i class="bi bi-calendar2-check"></i>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="checkout"
+                      name="end"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="adults" class="form-label">Adults</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="adults"
+                    name="adults"
+                    min="1"
+                    max="6"
+                    value="2"
+                    required
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="children" class="form-label">Children</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="children"
+                    name="children"
+                    min="0"
+                    max="6"
+                    value="0"
+                  />
+                </div>
+
+                <div class="col-md-12">
+                  <label for="room" class="form-label">Preferred room</label>
+                  <select id="room" name="room" class="form-select">
+                    <option value="any" selected>Any available room</option>
+                    <option value="generals-quarters">
+                      General's Quarters
+                    </option>
+                    <option value="majors-suite">Major's Suite</option>
+                  </select>
+                </div>
+
+                <div class="col-12 d-flex gap-2 pt-2">
+                  <button class="btn btn-brand btn-lg" type="submit">
+                    <i class="bi bi-search me-2"></i>Search availability
+                  </button>
+                  <button
+                    class="btn btn-outline-light btn-lg"
+                    type="button"
+                    id="clearBtn"
+                  >
+                    <i class="bi bi-eraser me-2"></i>Clear
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Sticky Summary / Policies -->
+          <div class="col-lg-5">
+            <aside class="card-modern p-4 sticky-top" style="top: 90px">
+              <h2 class="h5 fw-semibold">Your selection</h2>
+              <div class="text-secondary mb-3" id="summary">
+                Choose dates to see your stay summary.
+              </div>
+
+              <div
+                class="d-flex align-items-center justify-content-between mb-2"
+              >
+                <span class="text-secondary">Estimated price</span>
+                <span class="h4 m-0" id="price">—</span>
+              </div>
+              <p class="small text-secondary">
+                Final price shown after selecting a room. Taxes included. Free
+                cancellation within 48h.
+              </p>
+
+              <hr class="border-light opacity-25" />
+
+              <h3 class="h6 text-uppercase text-secondary">Policies</h3>
+              <ul class="text-secondary mb-0">
+                <li>Check‑in after 2:00 PM • Check‑out 11:00 AM</li>
+                <li>No smoking • Quiet hours 10 PM – 7 AM</li>
+                <li>Pets on request (fees may apply)</li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      class="py-5 border-top"
+      style="border-color: rgba(255, 255, 255, 0.12) !important"
+    >
+      <div class="container-xxl">
+        <div class="row gy-3 align-items-center">
+          <div class="col-md">
+            <span class="fw-semibold">Go B&B</span>
+            <span class="ms-2 text-secondary"
+              >© <span id="year"></span> All rights reserved.</span
+            >
+          </div>
+          <div class="col-md-auto d-flex gap-3">
+            <a class="link-light text-decoration-none" href="/about">About</a>
+            <a class="link-light text-decoration-none" href="/contact"
+              >Contact</a
+            >
+            <a class="link-light text-decoration-none" href="/make-reservation"
+              >Book</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Navbar blur on scroll
+      const nav = document.getElementById('topNav');
+      const onScroll = () => nav.classList.toggle('navbar-scrolled', window.scrollY > 12);
+      document.addEventListener('scroll', onScroll); onScroll();
+
+      // Current year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Date constraints + summary + naive price estimator
+      const checkin = document.getElementById('checkin');
+      const checkout = document.getElementById('checkout');
+      const adults = document.getElementById('adults');
+      const children = document.getElementById('children');
+      const room = document.getElementById('room');
+      const summary = document.getElementById('summary');
+      const price = document.getElementById('price');
+
+      // Set min dates
+      const today = new Date();
+      const pad = n => String(n).padStart(2, '0');
+      const toISO = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+      checkin.min = toISO(today);
+      const tomorrow = new Date(today); tomorrow.setDate(tomorrow.getDate()+1);
+      checkout.min = toISO(tomorrow);
+
+      function nights(){
+        if(!checkin.value || !checkout.value) return 0;
+        const a = new Date(checkin.value), b = new Date(checkout.value);
+        return Math.max(0, Math.round((b-a)/(1000*60*60*24)));
+      }
+
+      function updateSummary(){
+        const n = nights();
+        const a = Number(adults.value||0), c = Number(children.value||0);
+        const r = room.options[room.selectedIndex].text;
+        if(n>0){
+          summary.textContent = `${n} night${n>1?'s':''} • ${a} adult${a>1?'s':''}${c?` • ${c} child${c>1?'ren':'': ''}`:''} • ${r}`;
+          // simple estimator: base 150 + 20/adult per night; suite +30
+          let base = 150; if(room.value === 'majors-suite') base += 30;
+          const estimate = n * (base + (a*20));
+          price.textContent = `$${estimate}`;
+        } else {
+          summary.textContent = 'Choose dates to see your stay summary.';
+          price.textContent = '—';
+        }
+      }
+
+      [checkin, checkout, adults, children, room].forEach(el=>el.addEventListener('input', updateSummary));
+
+      // Keep checkout after checkin
+      checkin.addEventListener('change', () => {
+        const d = new Date(checkin.value || today);
+        d.setDate(d.getDate()+1);
+        const minOut = toISO(d);
+        checkout.min = minOut;
+        if(!checkout.value || checkout.value < minOut){ checkout.value = minOut; }
+        updateSummary();
+      });
+
+      // Clear button
+      document.getElementById('clearBtn').addEventListener('click', () => {
+        [checkin, checkout].forEach(i => i.value = '');
+        adults.value = 2; children.value = 0; room.value = 'any';
+        checkout.min = toISO(tomorrow);
+        updateSummary();
+      });
+
+      updateSummary();
+    </script>
+  </body>
+</html>
