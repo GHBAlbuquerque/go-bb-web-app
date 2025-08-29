@@ -1,10 +1,11 @@
 package handlers
 
 import (
-	"go-bb-web-app/pkg/config"
-	"go-bb-web-app/pkg/models"
-	"go-bb-web-app/pkg/render"
 	"net/http"
+
+	"github.com/GHBAlbuquerque/go-bb-web-app/pkg/config"
+	"github.com/GHBAlbuquerque/go-bb-web-app/pkg/models"
+	"github.com/GHBAlbuquerque/go-bb-web-app/pkg/render"
 )
 
 // Repository is the type definition

@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"go-bb-web-app/pkg/config"
-	"go-bb-web-app/pkg/handlers"
-	"go-bb-web-app/pkg/render"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/GHBAlbuquerque/go-bb-web-app/pkg/config"
+	"github.com/GHBAlbuquerque/go-bb-web-app/pkg/handlers"
+	"github.com/GHBAlbuquerque/go-bb-web-app/pkg/render"
 
 	"github.com/alexedwards/scs/v2"
 )

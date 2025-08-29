@@ -1,9 +1,10 @@
 package main
 
 import (
-	"go-bb-web-app/pkg/config"
-	"go-bb-web-app/pkg/handlers"
 	"net/http"
+
+	"github.com/GHBAlbuquerque/go-bb-web-app/pkg/config"
+	"github.com/GHBAlbuquerque/go-bb-web-app/pkg/handlers"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"

@@ -2,12 +2,13 @@ package render
 
 import (
 	"bytes"
-	"go-bb-web-app/pkg/config"
-	"go-bb-web-app/pkg/models"
 	"html/template"
 	"log"
 	"net/http"
 	"path/filepath"
+
+	"github.com/GHBAlbuquerque/go-bb-web-app/pkg/config"
+	"github.com/GHBAlbuquerque/go-bb-web-app/pkg/models"
 )
 
 var app *config.AppConfig

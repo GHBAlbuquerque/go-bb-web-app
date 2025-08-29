@@ -1,4 +1,4 @@
-module go-bb-web-app
+module github.com/GHBAlbuquerque/go-bb-web-app
 
 go 1.25.0
 
