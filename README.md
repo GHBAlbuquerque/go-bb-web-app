@@ -1,4 +1,7 @@
-#go-bb-web-app
+# go-bb-web-app
+## Bed & Breakfast
+
+A full-stack web application built with Go that allows guests to book rooms at a Bed & Breakfast and enables administrators to manage reservations through a secure back-office interface.
 
 ## Key Features
 • Showcase the property
