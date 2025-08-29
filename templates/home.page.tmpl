@@ -1,13 +1,156 @@
 {{template "base" .}}
 
 {{define "content"}}
-    <div class="container">
-        <dov class="row">
-            <div class="col-12">
-                <h1>Home</h1>
-                <p>This is the home page</p>
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-content px-3">
+        <span class="badge badge-soft rounded-pill px-3 py-2 mb-3"
+          >Seaside retreat • Breakfast included • Fast Wi‑Fi</span
+        >
+        <h1 class="display-4 fw-bold lh-tight mb-3">
+          Wake up by the Atlantic — comfort, calm & crafted hospitality
+        </h1>
+        <p class="lead text-white-50 mb-4">
+          A modern bed & breakfast where thoughtful design meets warm service.
+          Remote‑work friendly rooms, artisan breakfast, and breathtaking
+          coastal walks.
+        </p>
+        <div class="d-flex gap-2 justify-content-center">
+          <a class="btn btn-brand btn-lg px-4" href="/make-reservation"
+            >Check availability</a
+          >
+          <a class="btn btn-outline-light btn-lg px-4" href="#rooms"
+            >Explore rooms</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- HIGHLIGHTS -->
+    <section class="py-5 py-md-6">
+      <div class="container-xxl">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card-modern p-4 h-100">
+              <div class="icon-pill mb-3"><i class="bi bi-wifi"></i></div>
+              <h3 class="h5 fw-semibold mb-2">Work‑ready comfort</h3>
+              <p class="text-secondary mb-0">
+                Spacious desks, fast Wi‑Fi, and barista‑grade coffee for focused
+                mornings and relaxed evenings.
+              </p>
             </div>
-        </dov>
-    </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-modern p-4 h-100">
+              <div class="icon-pill mb-3">
+                <i class="bi bi-brightness-alt-high"></i>
+              </div>
+              <h3 class="h5 fw-semibold mb-2">Sunrise trays</h3>
+              <p class="text-secondary mb-0">
+                Locally sourced breakfast served to your door or in our lounge
+                overlooking the ocean.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-modern p-4 h-100">
+              <div class="icon-pill mb-3"><i class="bi bi-pin-map"></i></div>
+              <h3 class="h5 fw-semibold mb-2">Steps from the shore</h3>
+              <p class="text-secondary mb-0">
+                Coastal trails, hidden coves, and sunset vistas — all within a
+                short stroll.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROOMS GRID -->
+    <section id="rooms" class="py-4 py-md-5">
+      <div class="container-xxl">
+        <div class="d-flex align-items-end justify-content-between mb-3">
+          <h2 class="fw-semibold m-0">Rooms</h2>
+          <a class="link-light text-decoration-none" href="/make-reservation"
+            >See all →</a
+          >
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card-modern overflow-hidden h-100">
+              <div class="row g-0 h-100">
+                <div class="col-md-6">
+                  <img
+                    src="/static/images/woman-laptop.png"
+                    class="w-100 h-100 object-fit-cover"
+                    alt="Room workspace"
+                  />
+                </div>
+                <div class="col-md-6 p-4 d-flex flex-column">
+                  <span class="text-secondary small">General's Quarters</span>
+                  <h3 class="h5 fw-semibold mt-1 mb-2">
+                    Cozy King • Workspace
+                  </h3>
+                  <p class="text-secondary mb-4">
+                    King bed, premium linens, ergonomic desk, private bath.
+                  </p>
+                  <div class="mt-auto d-flex gap-2">
+                    <a
+                      class="btn btn-outline-light"
+                      href="/rooms/general-quarters"
+                      >Details</a
+                    >
+                    <a class="btn btn-brand" href="/make-reservation">Book</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card-modern overflow-hidden h-100">
+              <div class="row g-0 h-100">
+                <div class="col-md-6">
+                  <img
+                    src="/static/images/tray.png"
+                    class="w-100 h-100 object-fit-cover"
+                    alt="Breakfast tray"
+                  />
+                </div>
+                <div class="col-md-6 p-4 d-flex flex-column">
+                  <span class="text-secondary small">Major's Suite</span>
+                  <h3 class="h5 fw-semibold mt-1 mb-2">
+                    Suite • Ocean Glimpses
+                  </h3>
+                  <p class="text-secondary mb-4">
+                    Separate lounge, espresso bar, balcony seating, ensuite.
+                  </p>
+                  <div class="mt-auto d-flex gap-2">
+                    <a class="btn btn-outline-light" href="/rooms/marjors-suite"
+                      >Details</a
+                    >
+                    <a class="btn btn-brand" href="/make-reservation">Book</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-5">
+      <div class="container-xxl">
+        <div class="cta p-4 p-md-5 text-center">
+          <h3 class="h4 fw-semibold mb-2">Ready for a quieter kind of stay?</h3>
+          <p class="text-secondary mb-4">
+            Pick your dates — free cancellation within 48 hours.
+          </p>
+          <a class="btn btn-light btn-lg" href="/search-availability"
+            ><i class="bi bi-calendar2-check me-2"></i>Search availability</a
+          >
+        </div>
+      </div>
+    </section>
 
 {{end}}
