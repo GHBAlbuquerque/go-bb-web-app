@@ -1,5 +1,129 @@
 {{template "base" .}}
 
 {{define "content"}}
+<!-- HERO / TITLE STRIP -->
+<header
+  class="hero"
+  style="--hero-image: url('../images/generals-quarters.png')"
+>
+  <div class="hero-content">
+    <div class="container-xxl pb-4 pb-md-5">
+      <span class="badge badge-soft rounded-pill px-3 py-2 mb-3"
+        >Suite • Ocean glimpses • Breakfast included</span
+      >
+      <h1 class="display-5 fw-bold">General's Quarters</h1>
+      <p class="text-white-50 lead">A sophisticated suite with private pool.</p>
+    </div>
+  </div>
+</header>
 
-{{end}}
+<!-- CONTENT -->
+<main class="py-5 py-md-6">
+  <div class="container-xxl">
+    <div class="row g-4">
+      <!-- Gallery -->
+      <div class="col-lg-7">
+        <div class="gallery d-grid gap-3">
+          <img
+            src="../images/generals-quarters.png"
+            class="w-100"
+            alt="General's Quarters main photo"
+          />
+          <div class="row g-3">
+            <div class="col-6">
+              <img
+                src="../images/tray.png"
+                class="w-100"
+                alt="Breakfast tray"
+              />
+            </div>
+            <div class="col-6">
+              <img
+                src="../images/woman-laptop.png"
+                class="w-100"
+                alt="Workspace"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Details / Booking Card -->
+      <div class="col-lg-5">
+        <div class="card-modern p-4 p-md-4 sticky-top" style="top: 90px">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <h2 class="h4 fw-semibold m-0">Your stay</h2>
+            <span class="chip"
+              ><i class="bi bi-star-fill"></i><strong>4.8</strong
+              ><span class="text-secondary">(231)</span></span
+            >
+          </div>
+
+          <p class="text-secondary">
+            Your home away from home, set on the majestic waters of the Atlantic
+            Ocean — a vacation to remember. Premium linens, private bath, and
+            fast Wi‑Fi for focused mornings.
+          </p>
+
+          <div class="d-flex flex-wrap gap-2 amenity my-3">
+            <span class="chip"><i class="bi bi-wifi"></i> Fast Wi‑Fi</span>
+            <span class="chip"><i class="bi bi-cup-hot"></i> Espresso bar</span>
+            <span class="chip"><i class="bi bi-lamp"></i> Workspace</span>
+            <span class="chip"><i class="bi bi-sun"></i> Pool</span>
+            <span class="chip"><i class="bi bi-sunrise"></i> Breakfast</span>
+            <span class="chip"><i class="bi bi-droplet"></i> Ensuite</span>
+          </div>
+
+          <ul class="text-secondary mb-4">
+            <li>King bed • Premium linens</li>
+            <li>Private bathroom with rain shower</li>
+            <li>Separate lounge with sofa</li>
+            <li>Ocean peek views from balcony seating</li>
+          </ul>
+
+          <div class="d-flex align-items-end justify-content-between mb-3">
+            <div>
+              <div class="h4 fw-semibold m-0">
+                $189
+                <span class="h6 text-secondary fw-normal">/ night</span>
+              </div>
+              <div class="small text-secondary">
+                Free cancellation within 48h
+              </div>
+            </div>
+            <a class="btn btn-brand btn-lg" href="/search-availability"
+              ><i class="bi bi-calendar2-check me-2"></i>Check dates</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- More info sections -->
+    <div class="row g-4 mt-4">
+      <div class="col-lg-7">
+        <div class="card-modern p-4">
+          <h3 class="h5 fw-semibold mb-2">About this room</h3>
+          <p class="text-secondary mb-0">
+            Designed for quiet mornings and slow evenings, General's Quarters
+            balances coastal charm with modern comforts — ideal for remote
+            workers, couples, and solo travelers seeking a calm base near the
+            shore.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="card-modern p-4 h-100">
+          <h3 class="h6 text-uppercase text-secondary">House rules</h3>
+          <ul class="mb-0 text-secondary">
+            <li>Check‑in after 2:00 PM • Check‑out 11:00 AM</li>
+            <li>No smoking • No parties</li>
+            <li>Quiet hours 10:00 PM — 7:00 AM</li>
+            <li>Pets on request (fees may apply)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{{ end }}

@@ -1,5 +1,141 @@
 {{template "base" .}}
 
 {{define "content"}}
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="container-xxl pb-4 pb-md-5">
+      <span class="badge badge-soft rounded-pill px-3 py-2 mb-3"
+        >Plan your stay</span
+      >
+      <h1 class="display-5 fw-bold">Search availability</h1>
+      <p class="text-white-50 lead">
+        Choose your dates and guests — we’ll show you available rooms instantly.
+      </p>
+    </div>
+  </div>
+</header>
 
-{{end}}
+<!-- CONTENT -->
+<main class="py-5 py-md-6">
+  <div class="container-xxl">
+    <div class="row g-4">
+      <!-- Form -->
+      <div class="col-lg-7">
+        <form
+          class="card-modern p-4"
+          method="GET"
+          action="/search-availability"
+          id="reservationForm"
+        >
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="checkin" class="form-label">Check‑in</label>
+              <div class="input-icon">
+                <i class="bi bi-calendar-event"></i>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="checkin"
+                  name="start"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="checkout" class="form-label">Check‑out</label>
+              <div class="input-icon">
+                <i class="bi bi-calendar2-check"></i>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="checkout"
+                  name="end"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="adults" class="form-label">Adults</label>
+              <input
+                type="number"
+                class="form-control"
+                id="adults"
+                name="adults"
+                min="1"
+                max="6"
+                value="2"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="children" class="form-label">Children</label>
+              <input
+                type="number"
+                class="form-control"
+                id="children"
+                name="children"
+                min="0"
+                max="6"
+                value="0"
+              />
+            </div>
+
+            <div class="col-md-12">
+              <label for="room" class="form-label">Preferred room</label>
+              <select id="room" name="room" class="form-select">
+                <option value="any" selected>Any available room</option>
+                <option value="generals-quarters">General's Quarters</option>
+                <option value="majors-suite">Major's Suite</option>
+              </select>
+            </div>
+
+            <div class="col-12 d-flex gap-2 pt-2">
+              <button class="btn btn-brand btn-lg" type="submit">
+                <i class="bi bi-search me-2"></i>Search availability
+              </button>
+              <button
+                class="btn btn-outline-light btn-lg"
+                type="button"
+                id="clearBtn"
+              >
+                <i class="bi bi-eraser me-2"></i>Clear
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Sticky Summary / Policies -->
+      <div class="col-lg-5">
+        <aside class="card-modern p-4 sticky-top" style="top: 90px">
+          <h2 class="h5 fw-semibold">Your selection</h2>
+          <div class="text-secondary mb-3" id="summary">
+            Choose dates to see your stay summary.
+          </div>
+
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <span class="text-secondary">Estimated price</span>
+            <span class="h4 m-0" id="price">—</span>
+          </div>
+          <p class="small text-secondary">
+            Final price shown after selecting a room. Taxes included. Free
+            cancellation within 48h.
+          </p>
+
+          <hr class="border-light opacity-25" />
+
+          <h3 class="h6 text-uppercase text-secondary">Policies</h3>
+          <ul class="text-secondary mb-0">
+            <li>Check‑in after 2:00 PM • Check‑out 11:00 AM</li>
+            <li>No smoking • Quiet hours 10 PM – 7 AM</li>
+            <li>Pets on request (fees may apply)</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </div>
+</main>
+
+{{ end }}
