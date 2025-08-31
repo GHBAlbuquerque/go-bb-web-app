@@ -1,5 +1,179 @@
 {{template "base" .}}
 
 {{define "content"}}
+<!-- HERO -->
+<header
+  class="hero hero--short"
+  style="--hero-image: url('/static/images/outside.png')"
+>
+  <div class="hero-content px-3">
+    <span class="badge-soft rounded-pill px-3 py-2 mb-3 d-inline-block"
+      >Our story • Our place • Our promise</span
+    >
+    <h1 class="display-5 fw-bold lh-tight mb-2">About Go Bed & Breakfast</h1>
+    <p class="lead text-white-50 mb-0">
+      A seaside retreat for calm mornings, focused work, and slow evenings.
+    </p>
+  </div>
+</header>
 
-{{end}}
+<!-- ABOUT CONTENT -->
+<main class="py-5 py-md-6">
+  <div class="container-xxl">
+    <!-- Our Story -->
+    <section class="mb-4">
+      <div class="row g-4 align-items-stretch">
+        <div class="col-lg-7">
+          <div class="card-modern p-4 h-100">
+            <h2 class="h4 fw-semibold mb-2">Our story</h2>
+            <p class="text-secondary">
+              Go Bed & Breakfast was born from a simple idea: hospitality should
+              feel effortless. We renovated a classic coastal home into a
+              modern, work-friendly retreat where good coffee, strong Wi-Fi, and
+              warm service come standard. Whether you’re here for a weekend
+              reset or a focused workation, our space is designed to help you
+              breathe deeper and move slower.
+            </p>
+            <p class="text-secondary mb-0">
+              Every detail—linen quality, lighting, breakfast trays, and quiet
+              hours—was chosen to make your stay smooth and restorative. We’re a
+              small team, and we like it that way. It lets us notice the little
+              things and remember your favorites.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="card-modern p-4 h-100">
+            <h3 class="h6 text-uppercase text-secondary">At a glance</h3>
+            <ul class="mb-0 text-secondary">
+              <li>Seaside neighborhood • coastal trails nearby</li>
+              <li>Two signature rooms: General’s Quarters & Major’s Suite</li>
+              <li>Artisan breakfast • espresso bar</li>
+              <li>Fast Wi-Fi • ergonomic workspaces</li>
+              <li>Quiet hours 10PM–7AM</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="mb-4">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card-modern p-4 h-100">
+            <div class="icon-pill mb-3"><i class="bi bi-heart"></i></div>
+            <h3 class="h6 fw-semibold mb-1">Thoughtful hospitality</h3>
+            <p class="text-secondary mb-0">
+              Personal touches, local tips, and the kind of help you don’t have
+              to ask for.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card-modern p-4 h-100">
+            <div class="icon-pill mb-3">
+              <i class="bi bi-brightness-alt-high"></i>
+            </div>
+            <h3 class="h6 fw-semibold mb-1">Calm by design</h3>
+            <p class="text-secondary mb-0">
+              Soft lighting, quiet finishes, and spaces that balance rest and
+              productivity.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card-modern p-4 h-100">
+            <div class="icon-pill mb-3"><i class="bi bi-cup-hot"></i></div>
+            <h3 class="h6 fw-semibold mb-1">Breakfast that matters</h3>
+            <p class="text-secondary mb-0">
+              Locally sourced trays, good coffee, and flexible serving times.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team / Hosts -->
+    <section class="mb-4">
+      <div class="card-modern p-4">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-7">
+            <h2 class="h5 fw-semibold mb-2">Meet your hosts</h2>
+            <p class="text-secondary">
+              We’re a small, hands-on crew who live nearby. You’ll see us in the
+              mornings pulling espresso shots, adjusting room lighting, or
+              helping plan a walking route. We’re always close—just send a
+              message if you need anything during your stay.
+            </p>
+          </div>
+          <div class="col-lg-5">
+            <div class="d-flex flex-wrap gap-2 amenity">
+              <span class="chip"
+                ><i class="bi bi-chat-dots"></i> Quick replies</span
+              >
+              <span class="chip"
+                ><i class="bi bi-emoji-smile"></i> Friendly & discreet</span
+              >
+              <span class="chip"
+                ><i class="bi bi-geo-alt"></i> Local guidance</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location -->
+    <section class="mb-4">
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <div class="card-modern p-0">
+            <!-- Drop in your real map/embed here -->
+            <div
+              style="
+                aspect-ratio: 16/9;
+                background: rgba(255, 255, 255, 0.04);
+                border-radius: var(--radius);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                display: grid;
+                place-items: center;
+              "
+            >
+              <div class="text-secondary">Map / location embed placeholder</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="card-modern p-4 h-100">
+            <h3 class="h6 text-uppercase text-secondary">Where to find us</h3>
+            <p class="text-secondary mb-3">
+              Tucked on a quiet street near the Atlantic waterfront. Sunrise
+              walks, coffee spots, and coastal viewpoints are all a short stroll
+              away.
+            </p>
+            <ul class="text-secondary mb-0">
+              <li>5 min walk to the shore</li>
+              <li>10 min to the lighthouse trail</li>
+              <li>20 min from the regional airport</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mt-4">
+      <div class="cta p-4 p-md-5 text-center">
+        <h3 class="h4 fw-semibold mb-2">Ready for a quieter kind of stay?</h3>
+        <p class="text-secondary mb-4">
+          Check dates—free cancellation within 48 hours.
+        </p>
+        <a class="btn btn-light btn-lg" href="/search-availability"
+          ><i class="bi bi-calendar2-check me-2"></i>Search availability</a
+        >
+      </div>
+    </section>
+  </div>
+</main>
+{{ end }}
