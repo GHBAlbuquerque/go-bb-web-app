@@ -23,6 +23,11 @@ func NewRepository(a *config.AppConfig) *Repository {
 	}
 }
 
+// NewHandlers -> Constructor setting Repo
+func NewHandlers(r *Repository) {
+	Repo = r
+}
+
 func (m *Repository) Home(writer http.ResponseWriter, request *http.Request) {
 	remoteIP := request.RemoteAddr
 	m.App.Session.Put(request.Context(), "remote_ip", remoteIP) // everytime somebody hits the homepage, i'm storing the ip
@@ -32,7 +37,6 @@ func (m *Repository) Home(writer http.ResponseWriter, request *http.Request) {
 
 func (m *Repository) About(writer http.ResponseWriter, request *http.Request) {
 	stringMap := map[string]string{}
-	stringMap["test"] = "Hello again!"
 
 	remoteIP := m.App.Session.GetString(request.Context(), "remote_ip")
 	stringMap["remote_ip"] = remoteIP
@@ -40,7 +44,22 @@ func (m *Repository) About(writer http.ResponseWriter, request *http.Request) {
 	render.RenderTemplate(writer, "about.page.tmpl", &models.TemplateData{StringMap: stringMap})
 }
 
-// NewHandlers -> Constructor setting Repo
-func NewHandlers(r *Repository) {
-	Repo = r
+func (m *Repository) Contact(writer http.ResponseWriter, request *http.Request) {
+	render.RenderTemplate(writer, "contact.page.tmpl", &models.TemplateData{})
+}
+
+func (m *Repository) GeneralsQuarters(writer http.ResponseWriter, request *http.Request) {
+	render.RenderTemplate(writer, "generals.page.tmpl", &models.TemplateData{})
+}
+
+func (m *Repository) MarjorsSuite(writer http.ResponseWriter, request *http.Request) {
+	render.RenderTemplate(writer, "majors.page.tmpl", &models.TemplateData{})
+}
+
+func (m *Repository) MakeReservation(writer http.ResponseWriter, request *http.Request) {
+	render.RenderTemplate(writer, "make-reservation.page.tmpl", &models.TemplateData{})
+}
+
+func (m *Repository) SearchAvailability(writer http.ResponseWriter, request *http.Request) {
+	render.RenderTemplate(writer, "search-availability.page.tmpl", &models.TemplateData{})
 }
