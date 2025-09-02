@@ -20,14 +20,16 @@
 <main class="py-5 py-md-6">
   <div class="container-xxl">
     <div class="row g-4">
+      
       <!-- Form -->
       <div class="col-lg-7">
         <form
-          class="card-modern p-4"
-          method="GET"
+          class="card-modern p-4 needs-validation"
+          method="POST"
           action="/search-availability"
           id="reservationForm"
         >
+        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}"/>
           <div class="row g-3">
             <div class="col-md-6">
               <label for="checkin" class="form-label">Check‑in</label>

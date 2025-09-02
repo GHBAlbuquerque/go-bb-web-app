@@ -9,6 +9,7 @@ import (
 
 	"github.com/GHBAlbuquerque/go-bb-web-app/pkg/config"
 	"github.com/GHBAlbuquerque/go-bb-web-app/pkg/models"
+	"github.com/justinas/nosurf"
 )
 
 var app *config.AppConfig
@@ -18,16 +19,17 @@ func SetAppConfig(a *config.AppConfig) {
 	app = a
 }
 
-func AddDefaultData(templateData *models.TemplateData) *models.TemplateData {
-	//TODO
-
+func AddDefaultData(templateData *models.TemplateData, request *http.Request) *models.TemplateData {
 	if templateData == nil {
 		return &models.TemplateData{}
 	}
 
+	templateData.CSRFToken = nosurf.Token(request)
+
 	return templateData
 }
-func RenderTemplate(writer http.ResponseWriter, name string, templateData *models.TemplateData) {
+
+func RenderTemplate(writer http.ResponseWriter, request *http.Request, name string, templateData *models.TemplateData) {
 	// get the temaplte cache from the app config
 	templateCache := app.TemplateCache
 
@@ -39,7 +41,7 @@ func RenderTemplate(writer http.ResponseWriter, name string, templateData *model
 	}
 
 	buf := new(bytes.Buffer)
-	templateData = AddDefaultData(templateData)
+	templateData = AddDefaultData(templateData, request)
 
 	err := template.Execute(buf, templateData)
 	if err != nil {

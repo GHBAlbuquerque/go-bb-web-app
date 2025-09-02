@@ -32,7 +32,7 @@ func (m *Repository) Home(writer http.ResponseWriter, request *http.Request) {
 	remoteIP := request.RemoteAddr
 	m.App.Session.Put(request.Context(), "remote_ip", remoteIP) // everytime somebody hits the homepage, i'm storing the ip
 
-	render.RenderTemplate(writer, "home.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(writer, request, "home.page.tmpl", &models.TemplateData{})
 }
 
 func (m *Repository) About(writer http.ResponseWriter, request *http.Request) {
@@ -41,25 +41,29 @@ func (m *Repository) About(writer http.ResponseWriter, request *http.Request) {
 	remoteIP := m.App.Session.GetString(request.Context(), "remote_ip")
 	stringMap["remote_ip"] = remoteIP
 
-	render.RenderTemplate(writer, "about.page.tmpl", &models.TemplateData{StringMap: stringMap})
+	render.RenderTemplate(writer, request, "about.page.tmpl", &models.TemplateData{StringMap: stringMap})
 }
 
 func (m *Repository) Contact(writer http.ResponseWriter, request *http.Request) {
-	render.RenderTemplate(writer, "contact.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(writer, request, "contact.page.tmpl", &models.TemplateData{})
 }
 
 func (m *Repository) GeneralsQuarters(writer http.ResponseWriter, request *http.Request) {
-	render.RenderTemplate(writer, "generals.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(writer, request, "generals.page.tmpl", &models.TemplateData{})
 }
 
 func (m *Repository) MarjorsSuite(writer http.ResponseWriter, request *http.Request) {
-	render.RenderTemplate(writer, "majors.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(writer, request, "majors.page.tmpl", &models.TemplateData{})
 }
 
 func (m *Repository) MakeReservation(writer http.ResponseWriter, request *http.Request) {
-	render.RenderTemplate(writer, "make-reservation.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(writer, request, "make-reservation.page.tmpl", &models.TemplateData{})
 }
 
 func (m *Repository) SearchAvailability(writer http.ResponseWriter, request *http.Request) {
-	render.RenderTemplate(writer, "search-availability.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(writer, request, "search-availability.page.tmpl", &models.TemplateData{})
+}
+
+func (m *Repository) PostAvailability(writer http.ResponseWriter, request *http.Request) {
+	writer.Write([]byte("Posted to search-availability"))
 }
